@@ -1,0 +1,25 @@
+{
+  "name": "node-js-architecture",
+  "version": "1.0.0",
+  "description": "Full Node Architecture written in JS vanilla for Node projects. Implements hexagonal architecture and some Design Patters",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soyjuanmacias/node-js-architecture.git"
+  },
+  "keywords": [
+    "node",
+    "architecture",
+    "javascript",
+    "hexagonal"
+  ],
+  "author": "Juan Antonio Macías Pascualvaca®",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/soyjuanmacias/node-js-architecture/issues"
+  },
+  "homepage": "https://github.com/soyjuanmacias/node-js-architecture#readme"
+}
