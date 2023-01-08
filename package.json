@@ -1,7 +1,7 @@
 {
   "name": "node-js-architecture",
   "version": "1.0.0",
-  "description": "Full Node Architecture written in JS vanilla for Node projects. Implements hexagonal architecture and some Design Patters",
+  "description": "Full Node Architecture written in JS vanilla for Node projects. Implements hexagonal architecture and some Design Patterns",
   "main": "src/index.js",
   "scripts": {
     "start": "node index.js",
