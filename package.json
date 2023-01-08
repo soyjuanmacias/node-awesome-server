@@ -4,7 +4,7 @@
   "description": "Full Node Architecture written in JS vanilla for Node projects. Implements hexagonal architecture and some Design Patterns",
   "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon",
     "test": "jest"
   },
   "repository": {
