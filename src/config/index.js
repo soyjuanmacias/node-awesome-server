@@ -40,5 +40,4 @@ export default {
   sessionSecret,
   logs,
   prefix: '/api',
-
 };
