@@ -4,7 +4,8 @@
   "description": "Full Node Architecture written in JS vanilla for Node projects. Implements hexagonal architecture and some Design Patters",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -14,7 +15,12 @@
     "node",
     "architecture",
     "javascript",
-    "hexagonal"
+    "hexagonal",
+    "express",
+    "design patterns",
+    "clean code",
+    "jobs",
+    "js"
   ],
   "author": "Juan Antonio Macías Pascualvaca®",
   "license": "MIT",
@@ -23,6 +29,7 @@
   },
   "homepage": "https://github.com/soyjuanmacias/node-js-architecture#readme",
   "devDependencies": {
-    "eslint": "^8.31.0"
+    "eslint": "^8.31.0",
+    "prettier": "^2.8.2"
   }
 }
