@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import Logger from './logger';
-import config from '../config';
+import config from '../config/index.js';
+import Logger from './logger.js';
 
 if (!config.dbUri) {
   const error = 'No se reconoce la url de la base de datos'; 
@@ -10,7 +10,8 @@ if (!config.dbUri) {
 
 const connect = async () => {
   try {
-    const db = await mongoose.connect(urlDb);
+    mongoose.set('strictQuery', true);
+    const db = await mongoose.connect(config.dbUri);
     const { name, host } = db.connection;
     Logger.info(`Connected with db name: ${name} in host: ${host}`);
   } catch (error) {
