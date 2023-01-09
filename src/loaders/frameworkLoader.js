@@ -12,7 +12,7 @@ const frameworkLoader = (app) => {
     .use(cors({ origin: '*', credentials: true }))
     .use(express.json({ limit: '10mb' }))
     .use(express.urlencoded({ limit: '10mb', extended: true }))
-    .use(config.api.prefix, routes(app))
+    .use(routes(app))
     .use('*', (req, res) => res.status(404).json(`Route not found ${req.originalUrl}`))
     .use((error, req, res) =>
       res.status(error.status || 500).json({ errors: { message: error.message || 'Unexpected error' } }),
