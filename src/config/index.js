@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
-
 const env = dotenv.config();
+
 if (env.error) throw new Error('🔥 No existe archivo .env');
 // Set the NODE_ENV to 'development' by default
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -13,7 +13,7 @@ const port = parseInt(process.env.PORT, 10) || 3000;
 /**
  * Database URI
  */
-const dbUri = process.env.DB_URI_PROD;
+const dbUri = process.env.DB_URI_PROD || process.env.DB_URI_DEV;
 
 /**
  * Session Secret for passport and hash sessions in cookies
@@ -39,5 +39,5 @@ export default {
   dbUri,
   sessionSecret,
   logs,
-  prefix: '/api',
+  api,
 };

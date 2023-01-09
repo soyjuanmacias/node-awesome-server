@@ -16,6 +16,7 @@ const connect = async () => {
     Logger.info(`Connected with db name: ${name} in host: ${host}`);
   } catch (error) {
     Logger.error('Error to connect with db', error);
+    throw new Error(error);
   }
 };
 
