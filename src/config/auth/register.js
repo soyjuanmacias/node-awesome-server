@@ -1,44 +1,29 @@
-// import bcrypt from 'bcrypt';
 import { Strategy } from 'passport-local';
-import { checkIfUserExists } from '../../domain/users.js';
 import Logger from '../../loaders/logger.js';
-
-const saltRounds = 10;
+import EE from '../../loaders/eventEmitter.js';
+import { checkIfUserExists } from '../../domain/users.js';
+import events from '../../events/index.js';
 
 const registerStrategy = new Strategy(
   {
     usernameField: 'email',
     passwordField: 'password',
-    passReqToCallback: false,
+    passReqToCallback: true,
   },
-  async (email, password, done) => {
+  async (req, email, password, done) => {
     try {
-      Logger.info('🚀 ~ file: register.js ~ comprobando si existe %o', email);
       const user = await checkIfUserExists(email, done);
-      Logger.info('🚀 ~ file: register.js ~ usuario %o', user);
-      
+
       if (user) {
         const error = new Error('El usuario ya existe');
         error.status = 409;
-        throw error;
+        return done(error)
       }
-
-      // const encryptedPassword = await bcrypt.hash(password, saltRounds);
-      // Logger.debug('🚀 ~ file: register.js ~ line 38 ~ encryptedPassword %o', encryptedPassword);
-
-      // const user = new User({
-      //   ...req.body,
-      //   email,
-      //   password: encryptedPassword,
-      // });
-
-      // const userDB = await user.save();
-
-      // userDB.password = 'Jaque Mate maligno, no transferimos contraseñass';
-
-      // return done(null, userDB);
+      
+      EE.emit(events.user.register, {...req.body, done});
     } catch (error) {
-      return done(error.message);
+      Logger.error('%o', error);
+      return done(error);
     }
   },
 );

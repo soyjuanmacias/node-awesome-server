@@ -5,6 +5,7 @@ import setHeaders from './headers.js';
 import sessionLoader from './sessionLoader.js';
 import routes from '../api/index.js';
 import { errors } from 'celebrate';
+import Logger from './logger.js';
 
 const frameworkLoader = app => {
   app
@@ -20,8 +21,8 @@ const frameworkLoader = app => {
     .use(routes(app))
     .use('*', (req, res) => res.status(404).json(`Route not found ${req.originalUrl}`))
     .use(errors())
-    .use((error, req, res) =>
-      res.status(error.status || 500).json({ errors: { message: error.message || 'Unexpected error' } }),
+    .use((error, req, res, next) =>
+      res.status(error.status || 501).json({ errors: { message: error.message || 'Unexpected error' } }),
     );
 };
 
