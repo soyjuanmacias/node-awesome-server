@@ -14,8 +14,8 @@ const cookieLife = 60 * 24 * 60 * 60 * 1000;
 const sessionLoader = () => {
   return session({
     secret: config.sessionSecret,
-    saveUninitialized: false,
-    resave: false,
+    saveUninitialized: true,
+    resave: true,
     cookie: { maxAge: cookieLife },
     store: MongoStore.create({ mongoUrl: config.dbUri }),
   });
