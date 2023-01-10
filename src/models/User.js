@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 const userSchema = new Schema(
   {
@@ -22,6 +22,7 @@ const userSchema = new Schema(
 
     password: {
       type: String,
+      select: false,
     },
 
     salt: {
@@ -31,16 +32,19 @@ const userSchema = new Schema(
 
     role: {
       type: String,
-      default: 'user',
+      default: 'agent',
+      enum: ['admin', 'agent', 'supervisor', 'support'],
     },
   },
   {
-    timestamps: true
+    timestamps: true,
   },
 );
 
-userSchema.virtual('fullName').get(() => `${this.name} ${this.lastName}`);
+userSchema.virtual('fullName').get(function() {
+  return `${this.name} ${this.lastName}`;
+});
 
-const User = mongoose.model('users', userSchema);
+const User = model('users', userSchema);
 
 export default User;
