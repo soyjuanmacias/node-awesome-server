@@ -3,6 +3,15 @@ import express from 'express';
 import Logger from './loaders/logger.js';
 import loaders from './loaders/index.js';
 
+/**
+ * TODO Add agenda.js para crons
+ * TODO Add agenda.sh para interfaz visual de crons
+ * TODO create nodemailer service
+ * TODO create event emitter service
+ * TODO añadir typedi para inversión de dependencias.
+ * 
+ */
+
 const startServer = async () => {
   const app = express();
   
