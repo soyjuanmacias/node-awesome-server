@@ -1,8 +1,7 @@
 import { Strategy } from 'passport-local';
 import Logger from '../../loaders/logger.js';
-import EE from '../../loaders/eventEmitter.js';
-import { checkIfUserExists } from '../../domain/users.js';
 import events from '../../events/index.js';
+import { registerUser } from '../../domain/services/user.service.js';
 
 const registerStrategy = new Strategy(
   {
@@ -12,15 +11,7 @@ const registerStrategy = new Strategy(
   },
   async (req, email, password, done) => {
     try {
-      const user = await checkIfUserExists(email, done);
-
-      if (user) {
-        const error = new Error('El usuario ya existe');
-        error.status = 409;
-        return done(error)
-      }
-      
-      EE.emit(events.user.register, {...req.body, done});
+      await registerUser({...req.body, done});
     } catch (error) {
       Logger.error('%o', error);
       return done(error);

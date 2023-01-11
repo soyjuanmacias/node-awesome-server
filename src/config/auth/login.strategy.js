@@ -1,17 +1,15 @@
 import { Strategy } from 'passport-local';
-import EE from '../../loaders/eventEmitter.js';
+import { loginUser } from '../../domain/services/user.service.js';
 import events from '../../events/index.js';
 
 const loginStrategy = new Strategy(
   {
     usernameField: 'email',
     passwordField: 'password',
-    passReqToCallback: true,
+    passReqToCallback: false,
   },
-  async (req, email, password, done) => {
-    EE.emit(events.user.login, { email, password , done });
-
-    // return done(null, existingUser);
+  async (email, password, done) => {
+    await loginUser({email, password, done});
   },
 );
 
