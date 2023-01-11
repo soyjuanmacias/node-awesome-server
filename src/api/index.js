@@ -7,6 +7,11 @@ import authRoutes from './routes/auth.routes.js';
 const setRouter = (app, prefix, router) => {
   app.use(config.api.prefix + prefix, router);
   Logger.info(`${prefix} routes loaded`);
+const setRouter = (app, entityPrefix, router) => {
+  app.use(`${config.api.prefix}${entityPrefix}`, router);
+  Logger.info(`
+  ${entityPrefix}
+  router loaded successfully`);
 }
 
 const routes = (app) => {
