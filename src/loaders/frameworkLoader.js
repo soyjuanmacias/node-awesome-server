@@ -22,8 +22,9 @@ const frameworkLoader = app => {
     .use(routes(app))
     .use('*', (req, res) => res.status(404).json(`Route not found ${req.originalUrl}`))
     .use(errors())
+    // 🚀 Rocket418 😉
     .use((error, req, res, next) =>
-      res.status(error.status || 501).json({ errors: { message: error.message || 'Unexpected error' } }),
+      res.status(error.status || 418).json({ message: error.message || 'Unexpected error' }),
     );
 };
 
