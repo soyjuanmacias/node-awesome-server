@@ -4,9 +4,9 @@ import Logger from '../loaders/logger.js';
 import rootRoutes from './routes/root.routes.js';
 import authRoutes from './routes/auth.routes.js';
 
-const setRouter = (app, prefix, router) => {
-  app.use(config.api.prefix + prefix, router);
-  Logger.info(`${prefix} routes loaded`);
+
+/**
+ * Función encargada de cargar todas rutas de la API en el router del Framework
 const setRouter = (app, entityPrefix, router) => {
   app.use(`${config.api.prefix}${entityPrefix}`, router);
   Logger.info(`
