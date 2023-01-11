@@ -32,10 +32,10 @@ export const findUserByEmail = async email => {
   }
 };
 
-export const createUser = async user => {
+export const createUser = async data => {
   try {
-    const newUser = new User(user);
-    const created = await newUser.save();
+    const newDocument = new User(data);
+    const created = await newDocument.save();
     return created.toJSON();
   } catch (error) {
     Logger.error('Error creando el usuario %o', error);
