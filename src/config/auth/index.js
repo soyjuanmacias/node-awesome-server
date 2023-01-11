@@ -1,7 +1,8 @@
 import passport from 'passport';
-import registerStrategy from './register.js';
-import loginStrategy from './login.js';
-import { getUserById } from '../../domain/users.js';
+import registerStrategy from './register.strategy.js';
+import loginStrategy from './login.strategy.js';
+import { getUserById } from '../../domain/services/user.service.js';
+import Logger from '../../loaders/logger.js';
 
 /**
  * 
@@ -19,6 +20,7 @@ passport.deserializeUser(async (id, done) => {
     const logged = await getUserById(id);
     return done(null, logged);
   } catch (error) {
+    Logger.error('Error en deserializeUser %o', error)
     return done(error);
   }
 });
