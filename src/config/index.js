@@ -31,7 +31,7 @@ const logs = {
  * API configs
  */
 const api = {
-  prefix: '/api',
+  prefix: '/api/v1',
 };
 
 export default {
