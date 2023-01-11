@@ -1,4 +1,3 @@
-import express from 'express';
 import db from './dbLoader.js';
 import passport from '../config/auth/index.js';
 import frameworkLoader from './frameworkLoader.js';

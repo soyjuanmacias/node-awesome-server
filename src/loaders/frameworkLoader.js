@@ -1,11 +1,12 @@
 import express from 'express';
+import helmet from 'helmet';
 import cors from 'cors';
 import passport from 'passport';
 import setHeaders from './headers.js';
 import sessionLoader from './sessionLoader.js';
 import routes from '../api/index.js';
 import { errors } from 'celebrate';
-import Logger from './logger.js';
+
 
 const frameworkLoader = app => {
   app
