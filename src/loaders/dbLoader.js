@@ -2,6 +2,10 @@ import mongoose from 'mongoose';
 import config from '../config/index.js';
 import Logger from './logger.js';
 
+/**
+ * Loader encargado de la conexión con la base de datos
+ */
+
 if (!config.dbUri) {
   const error = 'No se reconoce la url de la base de datos'; 
   Logger.error(error);

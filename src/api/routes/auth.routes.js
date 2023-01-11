@@ -1,6 +1,9 @@
 import passport from 'passport';
 import { validateLogin, validateRegister } from '../middlewares/validators/auth.validators.js';
 
+/**
+ * Rutas de autenticación
+ */
 const authRoutes = router => {
   // const router = Router();
 

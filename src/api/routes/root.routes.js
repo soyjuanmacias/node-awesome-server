@@ -1,5 +1,8 @@
 import { Router } from 'express';
 
+/**
+ * Rutas sueltas y huérfanas
+ */
 const rootRoutes = router => {
 
   router.get('/', (req, res, next) => res.send('Server working route /'));

@@ -3,6 +3,13 @@ import passport from '../config/auth/index.js';
 import frameworkLoader from './frameworkLoader.js';
 import Logger from './logger.js';
 
+/**
+ * Loader encargado de cargar todos los loaders necesarios para la aplicación,
+ * en este caso, el loader de la base de datos y el loader del framework.
+ * 
+ * Se puede testear de manera muy sencilla mockeando los loaders sean necesarios.
+ */
+
 const loaders = async (app) => {
   try {
     await db.connect();

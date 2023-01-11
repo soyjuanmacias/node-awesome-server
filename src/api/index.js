@@ -7,6 +7,10 @@ import authRoutes from './routes/auth.routes.js';
 
 /**
  * Función encargada de cargar todas rutas de la API en el router del Framework
+ * @param {*} app Framework (Express)
+ * @param {*} prefix Prefijo de la versión de la API
+ * @param {*} router Router del Framework
+ */
 const setRouter = (app, entityPrefix, router) => {
   app.use(`${config.api.prefix}${entityPrefix}`, router);
   Logger.info(`
@@ -14,6 +18,11 @@ const setRouter = (app, entityPrefix, router) => {
   router loaded successfully`);
 }
 
+/**
+ * Generador del router usado en la configuración en frameworkLoader
+ * @param {*} app Framework (Express)
+ * @returns router del Framework configurado con todas las rutas cargadas
+ */
 const routes = (app) => {
   const router = Router();
   setRouter(app, '/auth', authRoutes(router));

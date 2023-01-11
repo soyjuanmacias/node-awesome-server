@@ -7,6 +7,13 @@ import sessionLoader from './sessionLoader.js';
 import routes from '../api/index.js';
 import { errors } from 'celebrate';
 
+/**
+ * Loader princpal de la aplicación y del framework Express usado actualmente.
+ * 
+ * En este loader se configuran todos los middlewares y se cargan las rutas de la API.
+ * 
+ * En el caso de cambiar de Framework, este loader debería ser el único que se modifique.
+ */
 
 const frameworkLoader = app => {
   app

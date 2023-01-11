@@ -1,5 +1,10 @@
 import { Schema, model } from 'mongoose';
 
+/**
+ * Esquema de usuario con métodos virtuales.
+ * Este modelo creará una colección en la base de datos llamada 'users'
+ */
+
 const userSchema = new Schema(
   {
     name: {
