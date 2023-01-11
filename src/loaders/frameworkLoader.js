@@ -10,6 +10,7 @@ import Logger from './logger.js';
 const frameworkLoader = app => {
   app
     .disable('x-powered-by')
+    .use(helmet())
     .use((req, res, next) => setHeaders(req, res, next))
     .enable('trust proxy')
     .use(cors({ origin: '*', credentials: true }))
