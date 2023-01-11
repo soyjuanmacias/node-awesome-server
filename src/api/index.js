@@ -3,6 +3,7 @@ import config from '../config/index.js';
 import Logger from '../loaders/logger.js';
 import rootRoutes from './routes/root.routes.js';
 import authRoutes from './routes/auth.routes.js';
+import templateRoutes from './routes/template.routes.js';
 
 
 /**
@@ -25,6 +26,7 @@ const setRouter = (app, entityPrefix, router) => {
  */
 const routes = (app) => {
   const router = Router();
+  setRouter(app, '/templates', templateRoutes(router));
   setRouter(app, '/auth', authRoutes(router));
   setRouter(app, '/', rootRoutes(router));
   return router;

@@ -1,4 +1,5 @@
 import User from './User.js';
+import Template from './Template.js';
 
 /**
  * Todos los modelos de la base de datos se exportarán desde este archivo.
@@ -8,5 +9,6 @@ import User from './User.js';
  */
 
 export {
-  User
+  User,
+  Template,
 };
