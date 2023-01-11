@@ -16,10 +16,8 @@ const setRouter = (app, entityPrefix, router) => {
 
 const routes = (app) => {
   const router = Router();
-  
-  setRouter(app, '/', rootRoutes(router));
   setRouter(app, '/auth', authRoutes(router));
-
+  setRouter(app, '/', rootRoutes(router));
   return router;
 };
 
