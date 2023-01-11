@@ -1,6 +1,5 @@
 import passport from 'passport';
-import Logger from '../../loaders/logger.js';
-import { validateLogin, validateRegister } from '../../validators/user.validators.js';
+import { validateLogin, validateRegister } from '../middlewares/validators/auth.validators.js';
 
 const authRoutes = router => {
   // const router = Router();
