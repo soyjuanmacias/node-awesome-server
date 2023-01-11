@@ -10,15 +10,22 @@ import Logger from '../../loaders/logger.js';
  * @param {*} res Viene proporcionado por el controlador user.controller.js Necesario para dar respuesta al usuario
  * @returns 
  */
-});
+export const doneFn = (req, res, next) => (error, user) =>
+  error
+    ? next(error)
+    : req.logIn(user, error => {
+        if (error) return next(error);
+        return res.status(200).json(user);
+      });
 
 /**
  * Middleware para el manejo de sesiones de passport
  */
+passport.serializeUser((user, done) => done(null, user._id));
+
 passport.deserializeUser(async (id, done) => {
   try {
-    const logged = await getUserById(id);
-    return done(null, logged);
+    done(null, await getUserById(id));
   } catch (error) {
     Logger.error('Error en deserializeUser %o', error)
     return done(error);
@@ -26,8 +33,13 @@ passport.deserializeUser(async (id, done) => {
 });
 
 const config = () => {
-  passport.use('login', loginStrategy);
-  passport.use('register', registerStrategy);
+  try {
+    passport.use('login', loginStrategy);
+    passport.use('register', registerStrategy);
+    Logger.info('Passport configurado correctamente');
+  } catch (error) {
+    Logger.error('Error en la configuración de passport %o', error);
+  }
 };
 
 export default { config };
